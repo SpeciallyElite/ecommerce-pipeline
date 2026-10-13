@@ -20,11 +20,10 @@ logger = logging.getLogger(__name__)
 
 url = "https://dummyjson.com/products"
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-RAW_DATA_PATH = "data/raw/"
-base_directory = os.path.dirname(RAW_DATA_PATH)
+RAW_DATA_PATH = "data/raw/products"
 today_date = datetime.now().strftime("%Y-%m-%d")
 today_hour = datetime.now().strftime("%H-%M-%S")
-new_directory = os.path.join(base_directory, today_date)
+new_directory = os.path.join(RAW_DATA_PATH, today_date)
 
 def tight_session():
     
@@ -44,7 +43,7 @@ def tight_session():
     
     return session
 
-def extract_data ():
+def extract_data():
     
     session = tight_session()
     
