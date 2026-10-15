@@ -10,7 +10,8 @@ extracted as (
         (products::json ->> 'price')::numeric as price,
         (products::json ->> 'rating')::numeric as rating,
         (products::json ->> 'stock')::integer as stock,
-        products::json ->> 'brand' as brand
+        products::json ->> 'brand' as brand,
+        loaded_at
     from source
 )
 

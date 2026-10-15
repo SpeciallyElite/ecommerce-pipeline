@@ -27,13 +27,8 @@ def load_to_postgres():
     
     for col in df.columns:
         df[col] = df[col].apply(lambda x: json.dumps(x) if isinstance(x, dict) else x)
-        
-    try:
-        with engine.begin() as conn:
-            conn.exec_driver_sql("TRUNCATE TABLE raw_carts;")
-    except:
-        pass
     
+    df['loaded_at'] = datetime.utcnow()
     df.to_sql("raw_carts", engine, if_exists="append", index=False)
     
 with DAG(

@@ -26,8 +26,9 @@ def load_to_postgresql():
     
     with engine.begin() as conn:
         conn.exec_driver_sql("TRUNCATE TABLE raw_products;")
-    
-    df.to_sql("raw_products", engine, if_exists="append", index=False)
+
+    df['loaded_at'] = datetime.utcnow()
+    df.to_sql("raw_products", engine, if_exists="replace", index=False)
 
 with DAG(
     dag_id="ecommerce-pipeline",

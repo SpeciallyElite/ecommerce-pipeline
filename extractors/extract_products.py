@@ -18,7 +18,7 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
-url = "https://dummyjson.com/products"
+url = "https://dummyjson.com/products?limit=0"
 headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 RAW_DATA_PATH = "data/raw/products"
 today_date = datetime.now().strftime("%Y-%m-%d")
